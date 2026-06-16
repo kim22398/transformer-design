@@ -10,6 +10,33 @@ A professional Python toolkit for power engineers covering transformer ratings, 
 
 ---
 
+## Run it (main.py)
+
+The repository ships a single command-line entry point at the project root.
+No installation or `PYTHONPATH` setup is required — `main.py` resolves the
+`transformer` package itself.
+
+```bash
+python main.py            # run the flagship 10 MVA transformer audit demo
+python main.py --help     # list every subcommand with help text
+python main.py test       # run the pytest suite (python -m pytest tests/ -q)
+```
+
+Domain subcommands expose the library calculations directly from the shell:
+
+```bash
+# Dissolved-gas analysis (Duval Triangle + Rogers Ratios)
+python main.py dga --h2 180 --ch4 290 --c2h2 4 --c2h4 310 --c2h6 75 --co 620 --co2 4100
+
+# Hot-spot temperature and loss-of-life (IEC 60076-7)
+python main.py thermal --load 1.1 --ambient 40
+```
+
+Every subcommand has sensible defaults, so e.g. `python main.py thermal`
+works on its own. Use `python main.py <command> --help` for the full flag list.
+
+---
+
 ## Table of Contents
 
 1. [Theory & Standards](#theory--standards)
