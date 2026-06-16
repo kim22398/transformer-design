@@ -118,7 +118,8 @@ transformer-design/
 │   └── loading.py                # Permissible loading and loss-of-life cycle
 │
 ├── examples/
-│   └── transformer_audit.py      # Full health-check audit for a 10 MVA unit
+│   ├── transformer_audit.py      # Full health-check audit for a 10 MVA unit
+│   └── loading_profile_plot.py   # 24 h thermal simulation → PNG (matplotlib)
 │
 ├── docs/
 │   ├── thermal_model_guide.md    # IEC 60076-7 thermal model deep-dive
@@ -227,6 +228,18 @@ print(f"Constraint  : {result['limiting_constraint']}")
 
 ```bash
 python examples/transformer_audit.py
+```
+
+### 24-Hour Loading Profile Plot
+
+Runs a steady-state thermal simulation over a typical daily load cycle and
+saves a figure of hot-spot / top-oil temperature vs. time (with the
+IEC 60076-7 98 °C and 120 °C limits marked) to
+`examples/output/loading_profile_24h.png`, alongside the integrated 24 h
+loss of life:
+
+```bash
+PYTHONPATH=. python examples/loading_profile_plot.py
 ```
 
 ---
